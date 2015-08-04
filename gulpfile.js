@@ -39,7 +39,7 @@ gulp.task('assets', function(){
 gulp.task('images', function(){
 	return gulp
 	.src('img/**/*.{jpg,png}')
-	.pipe(imagemin())
+	.pipe(environment === 'production' ? imagemin() : gutil.noop())
 	.pipe(gulp.dest('dist/img'))
 	.pipe(reload());
 });
